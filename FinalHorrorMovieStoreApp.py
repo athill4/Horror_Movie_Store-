@@ -3,8 +3,11 @@
 #This program is designed to be a Horror movie
 #app for people to purchase all types of Horror movies.
 
-
+#Import the tkinter module to create GUI applications
+#The tkinter library provides various widgets for creating graphical user interfaces.
 import tkinter as tk
+#Import the messagebox module from tkinter to display message boxes.
+#This creates pop-up message boxes showing information, warnings, or errors.
 from tkinter import messagebox
 from PIL import Image, ImageTk  #Import Pillow for image handling
 
