@@ -129,7 +129,7 @@ class HorrorMovieStoreApp:
         checkout_button = tk.Button(self.root, text="Checkout", command=self.checkout, bg="green", fg="black")
         checkout_button.pack(pady=10)
 
-        #Back to Login button (instead of Exit button)
+        #Back to Login button 
         back_to_login_button = tk.Button(self.root, text="Back to Login", command=self.back_to_login, bg="red", fg="white")
         back_to_login_button.pack(pady=10)
 
