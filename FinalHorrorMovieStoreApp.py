@@ -20,8 +20,8 @@ class HorrorMovieStoreApp:
         Parameters:
         root (Tkinter.Tk): The root window that holds the entire application.
         """
-        self.root = root
-        self.root.title("Horror Movie Store")
+        self.root = root #Root window for the aplication
+        self.root.title("Horror Movie Store") #Set title of the application window
         self.root.withdraw()  #Hide the root window initially
         self.movies = [  #List of movies available in the store
             {"title": "The Cabin in the Woods", "genre": "Sci-Fi", "price": 10.95, "image": "images/CabinInTheWoods.gif",
@@ -74,8 +74,9 @@ class HorrorMovieStoreApp:
         self.password_entry = tk.Entry(self.login_window, show="*", font=("Helvetica", 12))
         self.password_entry.pack(pady=10)
 
+        #Login button to submit credentials
         login_button = tk.Button(self.login_window, text="Login", command=self.check_login, bg="green", fg="black")
-        login_button.pack(pady=20)  #Login button to submit credentials
+        login_button.pack(pady=20)  
 
         #Exit button to close the application
         exit_button = tk.Button(self.login_window, text="Exit", command=self.exit_app, bg="red", fg="white")
@@ -91,11 +92,13 @@ class HorrorMovieStoreApp:
         correct_username = "user"  #Correct username
         correct_password = "password123"  #Correct password
 
+        #If the credentials are correct, open the main movie store window
         if username == correct_username and password == correct_password:
             self.login_window.destroy()  #Close the login window
             self.create_main_window()  #Open the main movie store window
             self.root.deiconify()  #Show the root window after successful login
         else:
+            #Show error message if credentails are incorrect
             messagebox.showerror("Login Error", "Incorrect username or password. Please try again.")
 
     def create_main_window(self):
@@ -129,7 +132,7 @@ class HorrorMovieStoreApp:
         checkout_button = tk.Button(self.root, text="Checkout", command=self.checkout, bg="green", fg="black")
         checkout_button.pack(pady=10)
 
-        #Back to Login button (instead of Exit button)
+        #Back to Login button 
         back_to_login_button = tk.Button(self.root, text="Back to Login", command=self.back_to_login, bg="red", fg="white")
         back_to_login_button.pack(pady=10)
 
@@ -146,14 +149,15 @@ class HorrorMovieStoreApp:
         title, genre, price, details about movie, and image.
         """
         try:
-            selected_movie_index = self.movie_listbox.curselection()[0]
-            selected_movie = self.movies[selected_movie_index]
+            selected_movie_index = self.movie_listbox.curselection()[0] #Get selected movie index
+            selected_movie = self.movies[selected_movie_index] #Get selected movie details
 
-            details_window = tk.Toplevel(self.root)
+            details_window = tk.Toplevel(self.root) #Create a new window for movie details
             details_window.title(f"{selected_movie['title']} Details")
             details_window.geometry("750x650")
             details_window.config(bg="black")
 
+            #Display movie details in the details window
             tk.Label(details_window, text=f"Title: {selected_movie['title']}", font=("Helvetica", 14), fg="white", bg="black").pack(pady=10)
             tk.Label(details_window, text=f"Genre: {selected_movie['genre']}", font=("Helvetica", 12), fg="white", bg="black").pack(pady=5)
             tk.Label(details_window, text=f"Price: ${selected_movie['price']}", font=("Helvetica", 12), fg="white", bg="black").pack(pady=5)
@@ -195,7 +199,7 @@ class HorrorMovieStoreApp:
         Removes the selected movie from the shopping cart and closes the cart window.
         """
         if movie in self.cart:
-            self.cart.remove(movie)
+            self.cart.remove(movie) #Remove the movie from cart
             messagebox.showinfo("Removed from Cart", f"{movie['title']} has been removed from your cart!")
             cart_window.destroy()  #Close the cart window after removing the movie
         else:
@@ -218,7 +222,7 @@ class HorrorMovieStoreApp:
             total_price = 0
             total_items = len(self.cart)
             for movie in self.cart:
-                frame = tk.Frame(cart_window, bg="black")
+                frame = tk.Frame(cart_window, bg="black") #Create a frame for each movie
                 frame.pack(pady=5)
                 tk.Label(frame, text=movie["title"], font=("Helvetica", 12), fg="white", bg="black").pack(side=tk.LEFT, padx=10)
                 remove_button = tk.Button(frame, text="Remove", command=lambda m=movie: self.remove_from_cart(m, cart_window), bg="red", fg="black")
