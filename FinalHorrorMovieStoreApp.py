@@ -52,7 +52,7 @@ class HorrorMovieStoreApp:
         self.login_window.geometry("500x600")  #Set the size of the login window
         self.login_window.config(bg="black")  #Set the background color to black
 
-        #Add Login Image (Replace with your own login image path if needed)
+        #Add Login Image 
         image_path = "images/HorrorMovieMadness.gif"
         try:
             login_image = Image.open(image_path)  #Use PIL to open the image
